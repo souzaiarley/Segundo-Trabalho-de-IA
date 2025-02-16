@@ -1,23 +1,25 @@
 import selection
 
-from instance import Instance
+from problemInstance import ProblemInstance
 from individual import Individual
 from random import shuffle
 
 # Class that implements an genetic algorithm to the QAP
 class GeneticAlgorithm:
 
-    def __init__(self, instance):
-        self.instance = instance
+    def __init__(self, problemInstance, selectionMethod, populationSize):
+        self.problemInstance = problemInstance
+        self.selectionMethod = selectionMethod
+        self.populationSize = populationSize
 
     # Evaluate the fitness of an individual
     def evaluate(self, permutation):
         fitness = 0
 
         # Calculate the fitness of the permutation using the distance and weight matrices
-        for i in range(self.instance.size):
-            for j in range(i, self.instance.size):
-                fitness += self.instance.weightMatrix[permutation[i]][permutation[j]] * self.instance.distanceMatrix[i][j]
+        for i in range(self.problemInstance.size):
+            for j in range(i, self.problemInstance.size):
+                fitness += self.problemInstance.weightMatrix[permutation[i]][permutation[j]] * self.problemInstance.distanceMatrix[i][j]
 
         return fitness
 
@@ -26,7 +28,7 @@ class GeneticAlgorithm:
         population = []
 
         # Create a list with the available locations, i.e., [0, 1, 2, ..., n-1]
-        locations = [i for i in range(0, self.instance.size)]
+        locations = [i for i in range(0, self.problemInstance.size)]
 
         # Create the population with random permutations
         for i in range(0, populationSize):
@@ -47,6 +49,9 @@ class GeneticAlgorithm:
         return population
 
 
-    def run(self, populationSize):
+    def run(self):
         # Initialize the population
-        population = self.initializePopulation(populationSize)
+        population = self.initializePopulation(self.populationSize)
+
+        parents = self.selectionMethod(self.populationSize, population)
+
