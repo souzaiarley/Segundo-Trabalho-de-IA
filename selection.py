@@ -5,9 +5,6 @@ def rankingSelection(populationSize, population):
     # Sort the population by cost from highest to lowest
     population.sort(key=lambda x: x.fitness, reverse=True)
 
-    for i in population:
-        print(i)
-
     # Create the roulette wheel
     roulette = []
 
