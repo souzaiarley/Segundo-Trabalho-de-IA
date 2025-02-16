@@ -9,7 +9,7 @@ def euclidean(fstlocation, sndlocation) -> float:
 
 
 # Class that represents an instance of the QA problem
-class Instance:
+class ProblemInstance:
     
     def __init__(self, n):
         self.size = n
