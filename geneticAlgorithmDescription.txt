@@ -1,0 +1,13 @@
+Um algoritmo genético deve possuir:
+
+1. Uma forma de emparelhamento
+2. Uma forma de crossover
+3. Uma forma de promover elitismo
+4. Uma forma de promover mutação
+
+5. Tamanho n da população de cada geração
+6. Um critério de parada (numero de gerações, melhor individuo não mudou apos k gerações, etc)
+7. taxa de elitismo
+6. taxa de mutação
+
+OBS: A função de fitness é fixa e está definida no documento.

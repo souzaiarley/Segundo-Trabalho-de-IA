@@ -1,3 +1,4 @@
+# Class that represents an individual in the population
 class Individual:
     
     def __init__(self, fitness, permutation):
