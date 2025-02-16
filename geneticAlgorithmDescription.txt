@@ -18,3 +18,6 @@ Escolha de seleção:
     Esse método de seleção foi escolhido devido sua capacidade de saber gerenciar a seleção quando individuos possuem valores de fitness muito próximos. Quando isso ocorre, a chance de individuos serem escolhidos torna-se quase que aleatoria, devido a sua semelhança, o que deixa a seleção pobre.
 
     Além disso ele também possui um bom gerenciamento de seleção quando indivíduos possuem valores de fitnesses muito discrepantes. Utilizando uma probabilidade simples baseada no fitness, individuos com maior fitness dominarão a seleção sendo mais escolhidos. Isso contribui para uma convergência prematura e perda de diversidade.
+
+- Torneio:
+    Esse método de seleção foi escolhido principalmente devido à sua simplicidade de implementação e promoção de diversidade. No método de torneio, um subconjunto de indivíduos é escolhido aleatoriamente da população, e o melhor indivíduo desse subconjunto é selecionado para reprodução. Isso garante que indivíduos com melhor fitness tenham uma maior chance de serem selecionados, mas ainda permite que indivíduos com menor fitness tenham uma chance de serem escolhidos, promovendo a diversidade na população.
