@@ -8,7 +8,7 @@ def euclidean(fstlocation, sndlocation) -> float:
     return math.floor(math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2))
 
 
-# Class that represents the instance of the QAP problem
+# Class that represents an instance of the QAP problem
 class Instance:
     
     def __init__(self, n):
