@@ -11,3 +11,10 @@ Um algoritmo genético deve possuir:
 6. taxa de mutação
 
 OBS: A função de fitness é fixa e está definida no documento.
+
+
+Escolha de seleção:
+- Ranking:
+    Esse método de seleção foi escolhido devido sua capacidade de saber gerenciar a seleção quando individuos possuem valores de fitness muito próximos. Quando isso ocorre, a chance de individuos serem escolhidos torna-se quase que aleatoria, devido a sua semelhança, o que deixa a seleção pobre.
+
+    Além disso ele também possui um bom gerenciamento de seleção quando indivíduos possuem valores de fitnesses muito discrepantes. Utilizando uma probabilidade simples baseada no fitness, individuos com maior fitness dominarão a seleção sendo mais escolhidos. Isso contribui para uma convergência prematura e perda de diversidade.

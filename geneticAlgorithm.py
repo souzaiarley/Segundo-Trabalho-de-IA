@@ -1,3 +1,5 @@
+import selection
+
 from instance import Instance
 from individual import Individual
 from random import shuffle
@@ -47,4 +49,4 @@ class GeneticAlgorithm:
 
     def run(self, populationSize):
         # Initialize the population
-        population = self.initializePopulation(populationSize)        
+        population = self.initializePopulation(populationSize)
