@@ -10,6 +10,7 @@ def euclidean(fstlocation, sndlocation) -> float:
 
 # Class that represents the instance of the QAP problem
 class Instance:
+    
     def __init__(self, n):
         self.size = n
         self.locations = []
