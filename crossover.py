@@ -69,6 +69,7 @@ def positionBasedCrossover(populationSize, parents):
             if index not in indexes:
                 indexes.append(index)
 
+        # Copy the selected elements from the parents to the children
         for index in indexes:
             fstChild[index] = chromosome1[index]
             sndChild[index] = chromosome2[index]
