@@ -21,3 +21,11 @@ Escolha de seleção:
 
 - Torneio:
     Esse método de seleção foi escolhido principalmente devido à sua simplicidade de implementação e promoção de diversidade. No método de torneio, um subconjunto de indivíduos é escolhido aleatoriamente da população, e o melhor indivíduo desse subconjunto é selecionado para reprodução. Isso garante que indivíduos com melhor fitness tenham uma maior chance de serem selecionados, mas ainda permite que indivíduos com menor fitness tenham uma chance de serem escolhidos, promovendo a diversidade na população.
+
+
+Escolha de crossover:
+- Order Crossover (OX):
+    Esse método de crossover foi escolhido devido a sua natureza de evitar repetições, sendo aplicado inclusive em instâncias dos problemas do caixeiro viajante e alocação quadrática, que é o problema proposto para esse trabalho.
+
+- Position-Based Crossover (PBX):
+    Esse método de crossover foi escolhido devido a sua natureza de evitar repetições, sendo aplicado inclusive em instâncias dos problemas do caixeiro viajante e alocação quadrática, que é o problema proposto para esse trabalho.

@@ -1,4 +1,5 @@
 import selection
+import crossover
 
 from problemInstance import ProblemInstance
 from individual import Individual
@@ -7,9 +8,10 @@ from random import shuffle
 # Class that implements an genetic algorithm to the QAP
 class GeneticAlgorithm:
 
-    def __init__(self, problemInstance, selectionMethod, populationSize):
+    def __init__(self, problemInstance, selectionMethod, crossoverMethod, populationSize):
         self.problemInstance = problemInstance
         self.selectionMethod = selectionMethod
+        self.crossoverMethod = crossoverMethod
         self.populationSize = populationSize
 
     # Evaluate the fitness of an individual
@@ -35,7 +37,7 @@ class GeneticAlgorithm:
 
             # Shuffle the list of available locations, i.e., create a random permutation
             shuffle(locations)
-            permutation = locations
+            permutation = locations.copy()
 
             # Evaluate the fitness of the permutation
             fitness = self.evaluate(permutation)
@@ -48,10 +50,12 @@ class GeneticAlgorithm:
 
         return population
 
-
     def run(self):
-        # Initialize the population
+        # Generate the initial population randomly
         population = self.initializePopulation(self.populationSize)
 
+        # Select the parents for the crossover
         parents = self.selectionMethod(self.populationSize, population)
 
+        # Generate the offspring using the crossover method
+        offspring = self.crossoverMethod(self.populationSize, parents)
