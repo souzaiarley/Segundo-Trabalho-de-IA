@@ -12,10 +12,13 @@ def rankingSelection(populationSize, population):
         for j in range(i+1):
             roulette.append(i)
 
+    # Calculate the number of reproductions
+    reproductions = populationSize//2 if populationSize % 2 == 0 else populationSize//2 + 1
+    
     # Select the parents
     parents = []
 
-    for i in range(0, populationSize):
+    for i in range(0, reproductions):
         parent1 = population[roulette[randint(0, len(roulette)-1)]]
         parent2 = population[roulette[randint(0, len(roulette)-1)]]
 
@@ -39,10 +42,13 @@ def executeTournament(population):
     return tournament[0]
 
 def tournamentSelection(populationSize, population):
-    parents = []
-
+    # Calculate the number of reproductions
+    reproductions = populationSize//2 if populationSize % 2 == 0 else populationSize//2 + 1
+    
     # Select the parents based on the tournament selection
-    for i in range(0, populationSize):
+    parents = []
+    
+    for i in range(0, reproductions):
         parent1 = executeTournament(population)
         parent2 = executeTournament(population)
 
