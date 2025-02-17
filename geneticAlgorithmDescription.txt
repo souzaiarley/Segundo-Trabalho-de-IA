@@ -29,3 +29,10 @@ Escolha de crossover:
 
 - Position-Based Crossover (PBX):
     Esse método de crossover foi escolhido devido a sua natureza de evitar repetições, sendo aplicado inclusive em instâncias dos problemas do caixeiro viajante e alocação quadrática, que é o problema proposto para esse trabalho.
+
+Escolha de mutação:
+- Simple Inversion Mutation (SIM):
+    Esse método de mutação foi escolhido devido sua capacidade de preservar boa parte da estrutura da solução original, mas ainda introduzir variação suficiente para evitar convergência prematura. Ele seleciona dois pontos aleatórios no cromossomo e inverte a ordem dos elementos dentro desse intervalo.
+
+- Exchange Mutation (EM):
+    Esse método de mutação foi escolhido por sua simplicidade e eficiência. Ele consiste em selecionar dois genes aleatórios no cromossomo e trocar suas posições. Isso ajuda a explorar o espaço de soluções sem modificar drasticamente a estrutura do indivíduo, tornando-o adequado para problemas combinatórios como o QAP.
