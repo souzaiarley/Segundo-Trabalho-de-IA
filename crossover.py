@@ -1,6 +1,6 @@
 from random import randint
 
-# Function that implements the order crossover(OX) method
+# Function that implements the order crossover (OX) method
 def orderCrossover(populationSize, parents):
     offspring = []
 
@@ -48,7 +48,7 @@ def orderCrossover(populationSize, parents):
 
     return offspring
 
-# Function that implements the position-based crossover(PBX) method
+# Function that implements the position-based crossover (PBX) method
 def positionBasedCrossover(populationSize, parents):
     offspring = []
 
