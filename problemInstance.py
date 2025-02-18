@@ -1,5 +1,6 @@
 import math
 from random import randint
+from itertools import permutations
 
 # Function that calculates the Euclidean distance between two points
 def euclidean(fstlocation, sndlocation) -> float:
@@ -69,3 +70,21 @@ class ProblemInstance:
         print("\nWeight Matrix: ")
         for line in self.weightMatrix:
             print(line)
+
+    # Function that calculates the cost of a given permutation
+    def calculateCost(self, perm):
+        cost = 0
+        for i in range(len(perm) - 1):
+            cost += self.distanceMatrix[perm[i]][perm[i+1]] * self.weightMatrix[perm[i]][perm[i+1]]
+        return cost
+
+    # Brute-force algorithm to find the best permutation
+    def findBestPermutation(self):
+        best_perm = None
+        best_cost = float('inf')
+        for perm in permutations(range(self.size)):
+            current_cost = self.calculateCost(perm)
+            if current_cost < best_cost:
+                best_cost = current_cost
+                best_perm = perm
+        return best_perm, best_cost

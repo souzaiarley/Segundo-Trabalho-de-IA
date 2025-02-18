@@ -101,8 +101,8 @@ class GeneticAlgorithm:
             # Get the population statistics
             min_individual, max_individual, avg_fitness = self.getPopulationStats(population)
 
-            print(f'Individual with lowest cost: {min_individual.fitness}')
-            print(f'Individual with highest cost: {max_individual.fitness}')
+            print(f'Individual with lowest cost: {min_individual}')
+            print(f'Individual with highest cost: {max_individual}')
             print(f'Average cost: {avg_fitness}')
 
             # Select the elite individuals, they will be preserved for the next generation
@@ -125,7 +125,7 @@ class GeneticAlgorithm:
 
 if __name__ == '__main__':
     # Problem variables
-    n = 10
+    n = 5
 
     # Create the problem instance
     problemInstance = ProblemInstance(n)
@@ -133,11 +133,11 @@ if __name__ == '__main__':
 
     # Genetic algorithm variables
     selectionMethod = selection.tournamentSelection
-    crossoverMethod = crossover.orderCrossover
-    mutationMethod = mutation.exchange
+    crossoverMethod = crossover.positionBasedCrossover
+    mutationMethod = mutation.inversion
     elitismMethod = elitism.elitism
     populationSize = 30
-    mutationRate = 0.1
+    mutationRate = 0.5
     elitismRate = 0.05
     generations = 100
 
@@ -145,3 +145,6 @@ if __name__ == '__main__':
     geneticAlgorithm = GeneticAlgorithm(problemInstance, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
 
     geneticAlgorithm.run()
+
+
+    print(f"MELHOR, {problemInstance.findBestPermutation()}")
