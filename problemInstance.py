@@ -71,20 +71,22 @@ class ProblemInstance:
         for line in self.weightMatrix:
             print(line)
 
-    # Function that calculates the cost of a given permutation
-    def calculateCost(self, perm):
-        cost = 0
-        for i in range(len(perm) - 1):
-            cost += self.distanceMatrix[perm[i]][perm[i+1]] * self.weightMatrix[perm[i]][perm[i+1]]
-        return cost
-
-    # Brute-force algorithm to find the best permutation
-    def findBestPermutation(self):
-        best_perm = None
-        best_cost = float('inf')
+    # These two functions are used to solve the problem using the brute force approach
+    def evaluate(self, permutation):
+        fitness = 0
+        for i in range(self.size):
+            for j in range(i, self.size):
+                fitness += self.weightMatrix[permutation[i]][permutation[j]] * self.distanceMatrix[i][j]
+        return fitness
+    
+    def bruteForce(self):
+        bestPermutation = None
+        minCost = float('inf')
+        
         for perm in permutations(range(self.size)):
-            current_cost = self.calculateCost(perm)
-            if current_cost < best_cost:
-                best_cost = current_cost
-                best_perm = perm
-        return best_perm, best_cost
+            cost = self.evaluate(perm)
+            if cost < minCost:
+                minCost = cost
+                bestPermutation = perm
+                
+        return "-".join(map(str, bestPermutation)), minCost
