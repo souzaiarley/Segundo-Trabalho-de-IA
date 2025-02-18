@@ -5,7 +5,7 @@ def elitism(population, populationSize, eliteRate):
     eliteSize = ceil(populationSize * eliteRate)
 
     # Sort the population by cost from lowest to highest
-    population.sort(key=lambda x: x.fitness, reverse=True)
+    population.sort(key=lambda x: x.fitness)
 
     # Select the elite individuals
     elite = population[:eliteSize]
