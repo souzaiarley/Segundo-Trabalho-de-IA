@@ -127,7 +127,7 @@ class GeneticAlgorithm:
 
 if __name__ == '__main__':
     # Problem variables
-    n = 10
+    n = 8
 
     # Create the problem instance
     problemInstance = ProblemInstance(n)
