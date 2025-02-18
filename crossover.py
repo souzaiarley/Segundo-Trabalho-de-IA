@@ -2,7 +2,7 @@ from random import randint
 
 # Function that implements the order crossover (OX) method
 def orderCrossover(populationSize, parents):
-    offspring = []
+    children = []
 
     for p in parents:
         # Get the chromosomes of the parents
@@ -38,19 +38,19 @@ def orderCrossover(populationSize, parents):
                         sndChild[l] = chromosome1[k]
                         break
 
-        # add the children to the offspring
-        offspring.append(fstChild)
-        offspring.append(sndChild)
+        # add the children to the children
+        children.append(fstChild)
+        children.append(sndChild)
 
-    # Remove the last individual if the offspring size is greater than the population size
-    if len(offspring) > populationSize:
-        offspring = offspring[:populationSize]
+    # Remove the last individual if the children size is greater than the population size
+    if len(children) > populationSize:
+        children = children[:populationSize]
 
-    return offspring
+    return children
 
 # Function that implements the position-based crossover (PBX) method
 def positionBasedCrossover(populationSize, parents):
-    offspring = []
+    children = []
 
     for p in parents:
         # Get the chromosomes of the parents
@@ -90,12 +90,12 @@ def positionBasedCrossover(populationSize, parents):
                         sndChild[l] = chromosome1[k]
                         break
 
-        # add the children to the offspring
-        offspring.append(fstChild)
-        offspring.append(sndChild)
+        # add the children to the children
+        children.append(fstChild)
+        children.append(sndChild)
 
-    # Remove the last individual if the offspring size is greater than the population size
-    if len(offspring) > populationSize:
-        offspring = offspring[:populationSize]
+    # Remove the last individual if the children size is greater than the population size
+    if len(children) > populationSize:
+        children = children[:populationSize]
 
-    return offspring
+    return children
