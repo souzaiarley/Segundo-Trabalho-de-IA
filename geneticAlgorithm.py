@@ -1,7 +1,7 @@
-import selection as selection
-import crossover as crossover
-import mutation as mutation
-import elitism as elitism
+import geneticMethods.selection as selection
+import geneticMethods.crossover as crossover
+import geneticMethods.mutation as mutation
+import geneticMethods.elitism as elitism
 
 from problemInstance import ProblemInstance
 from individual import Individual
@@ -123,41 +123,3 @@ class GeneticAlgorithm:
             population = self.evolve(elite, mutatedchildren)
 
         return minIndividual
-
-
-if __name__ == '__main__':
-    # Problem variables
-    n = 8
-
-    # Create the problem instance
-    problemInstance = ProblemInstance(n)
-    problemInstance.generateInstance()
-
-    # Genetic algorithm variables
-    selectionMethod = selection.tournamentSelection
-    crossoverMethod = crossover.orderCrossover
-    mutationMethod = mutation.inversion
-    elitismMethod = elitism.elitism
-    populationSize = 15
-    mutationRate = 0.01
-    elitismRate = 0.1
-    generations = 100
-
-    # Create and run the genetic algorithm
-    geneticAlgorithm = GeneticAlgorithm(problemInstance, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
-
-    geneticAlgorithmSolution = geneticAlgorithm.run()
-
-    # Results
-    applyBruteForce = True # Not recommended for large values of n
-
-    print('\n----------> Solution <----------')
-
-    print(f'\nGenetic algorithm solution:')
-    print(geneticAlgorithmSolution)
-
-    if applyBruteForce:
-        bruteForceSolution = (problemInstance.bruteForce())
-
-        print(f'\nBrute force solution:')
-        print(f'Fitness: {bruteForceSolution[1]}, Permutation: {bruteForceSolution[0]}')
