@@ -59,23 +59,23 @@ class GeneticAlgorithm:
     
     # Get the population statistics
     def getPopulationStats(self, population):
-        min_fitness = float('inf')
-        max_fitness = float('-inf')
-        total_fitness = 0
+        minFitness = float('inf')
+        maxFitness = float('-inf')
+        totalFitness = 0
 
         for individual in population:
             fitness = individual.fitness
-            if fitness < min_fitness:
-                min_fitness = fitness
-                min_individual = individual
-            if fitness > max_fitness:
-                max_fitness = fitness
-                max_individual = individual
-            total_fitness += fitness
+            if fitness < minFitness:
+                minFitness = fitness
+                minIndividual = individual
+            if fitness > maxFitness:
+                maxFitness = fitness
+                maxIndividual = individual
+            totalFitness += fitness
 
-        avg_fitness = round(total_fitness / len(population))
+        avgFitness = round(totalFitness / len(population))
 
-        return min_individual, max_individual, avg_fitness
+        return minIndividual, maxIndividual, avgFitness
 
     # Evolve the population
     def evolve(self, elite, children):
@@ -95,15 +95,17 @@ class GeneticAlgorithm:
         # Generate the initial population randomly
         population = self.initializePopulation(self.populationSize)
 
+        minIndividual = maxIndividual = avgFitness = None
+
         for i in range(0, self.generations):
-            print(f'Generation {i}')
+            print(f'\nGeneration {i}')
 
             # Get the population statistics
-            min_individual, max_individual, avg_fitness = self.getPopulationStats(population)
+            minIndividual, maxIndividual, avgFitness = self.getPopulationStats(population)
 
-            print(f'Individual with lowest cost: {min_individual}')
-            print(f'Individual with highest cost: {max_individual}')
-            print(f'Average cost: {avg_fitness}')
+            print(f'Individual with lowest cost: {minIndividual}')
+            print(f'Individual with highest cost: {maxIndividual}')
+            print(f'Average cost: {avgFitness}')
 
             # Select the elite individuals, they will be preserved for the next generation
             elite = self.elitismMethod(population, self.populationSize, self.elitismRate)
@@ -120,12 +122,12 @@ class GeneticAlgorithm:
             # Evolve the population
             population = self.evolve(elite, mutatedchildren)
 
-            print()
+        return minIndividual
 
 
 if __name__ == '__main__':
     # Problem variables
-    n = 5
+    n = 10
 
     # Create the problem instance
     problemInstance = ProblemInstance(n)
@@ -133,18 +135,29 @@ if __name__ == '__main__':
 
     # Genetic algorithm variables
     selectionMethod = selection.tournamentSelection
-    crossoverMethod = crossover.positionBasedCrossover
+    crossoverMethod = crossover.orderCrossover
     mutationMethod = mutation.inversion
     elitismMethod = elitism.elitism
-    populationSize = 30
-    mutationRate = 0.5
-    elitismRate = 0.05
+    populationSize = 15
+    mutationRate = 0.01
+    elitismRate = 0.1
     generations = 100
 
     # Create and run the genetic algorithm
     geneticAlgorithm = GeneticAlgorithm(problemInstance, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
 
-    geneticAlgorithm.run()
+    geneticAlgorithmSolution = geneticAlgorithm.run()
 
+    # Results
+    applyBruteForce = True # Not recommended for large values of n
 
-    print(f"MELHOR, {problemInstance.findBestPermutation()}")
+    print('\n----------> Solution <----------')
+
+    print(f'\nGenetic algorithm solution:')
+    print(geneticAlgorithmSolution)
+
+    if applyBruteForce:
+        bruteForceSolution = (problemInstance.bruteForce())
+
+        print(f'\nBrute force solution:')
+        print(f'Fitness: {bruteForceSolution[1]}, Permutation: {bruteForceSolution[0]}')
