@@ -92,20 +92,22 @@ class GeneticAlgorithm:
         return newPopulation
 
     def run(self):
+        output = []
+
         # Generate the initial population randomly
         population = self.initializePopulation(self.populationSize)
 
         minIndividual = maxIndividual = avgFitness = None
 
         for i in range(0, self.generations):
-            print(f'\nGeneration {i}')
+            # print(f'\nGeneration {i}')
 
             # Get the population statistics
             minIndividual, maxIndividual, avgFitness = self.getPopulationStats(population)
 
-            print(f'Individual with lowest cost: {minIndividual}')
-            print(f'Individual with highest cost: {maxIndividual}')
-            print(f'Average cost: {avgFitness}')
+            # print(f'Individual with lowest cost: {minIndividual}')
+            # print(f'Individual with highest cost: {maxIndividual}')
+            # print(f'Average cost: {avgFitness}')
 
             # Select the elite individuals, they will be preserved for the next generation
             elite = self.elitismMethod(population, self.populationSize, self.elitismRate)
@@ -122,4 +124,13 @@ class GeneticAlgorithm:
             # Evolve the population
             population = self.evolve(elite, mutatedchildren)
 
-        return minIndividual
+            # Build the output
+            generation = {
+                'generation': i,
+                'min': minIndividual,
+                'max': maxIndividual,
+                'avg': avgFitness
+            }
+            output.append(generation)
+
+        return output
