@@ -36,3 +36,12 @@ Escolha de mutação:
 
 - Exchange Mutation (EM):
     Esse método de mutação foi escolhido por sua simplicidade e eficiência. Ele consiste em selecionar dois genes aleatórios no cromossomo e trocar suas posições. Isso ajuda a explorar o espaço de soluções sem modificar drasticamente a estrutura do indivíduo, tornando-o adequado para problemas combinatórios como o QAP.
+
+Escolha de elitismo:
+- Elitismo Puro: 
+    Elitismo padrão, uma porcentagem dos individuos (k melhores da população) são escolhidos.
+
+- Elitismo Balanceado:
+    Uma porcentagem dos individuos (k melhores da população) são escolhidos, porém apenas metade destes são de fato passados para a próxima geração (os piores dentre os escolhidos).
+
+    Pensamos nessa abordagem visando promover a diversidade na população, pois os melhores individuos, já tem uma vantagem significativa no processo de seleção, então concluímos que seria ruim que esses melhores individuos, além de possuir vantagem seletiva, ainda possuírem a garantia de serem passados para a próxima geração, podendo inclusive contribuir para quem sabe uma convergência prematura.
