@@ -12,17 +12,25 @@ def pureElitism(population, populationSize, eliteRate):
 
     return elite
 
-def balancedElitism(population, populationSize, eliteRate):
-    # Calculate the number of elite individuals
-    eliteSize = ceil(populationSize * eliteRate)
+def conditionalElitism(population, populationSize, eliteRate):
+    # Define the diversity limit
+    diversityLimit = 0.1
 
     # Sort the population by cost from lowest to highest
     population.sort(key=lambda x: x.fitness)
 
-    # Select the elite individuals
-    elite = population[:eliteSize]
+    best = population[0]
+    worst = population[-1]
 
-    # Select the worst individuals
-    elite = elite[::-1]
-    worstElite = elite[:eliteSize//2]
-    return worstElite
+    diversityRate = ((worst.fitness*100/best.fitness) - 100)/100
+
+    if diversityRate > diversityLimit:
+        # Calculate the number of elite individuals
+        eliteSize = ceil(populationSize * eliteRate)
+
+        # Select the elite individuals
+        elite = population[:eliteSize]
+
+        return elite
+
+    return []

@@ -11,8 +11,8 @@ problemInstance.generateInstance()
 selectionMethod = tournamentSelection
 crossoverMethod = orderCrossover
 mutationMethod = inversion
-elitismMethod = pureElitism
-populationSize = 500
+elitismMethod = conditionalElitism
+populationSize = 100
 mutationRate = 0.01
 elitismRate = 0.01
 generations = 30

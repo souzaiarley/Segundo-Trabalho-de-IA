@@ -41,7 +41,11 @@ Escolha de elitismo:
 - Elitismo Puro: 
     Elitismo padrão, uma porcentagem dos individuos (k melhores da população) são escolhidos.
 
-- Elitismo Balanceado:
-    Uma porcentagem dos individuos (k melhores da população) são escolhidos, porém apenas metade destes são de fato passados para a próxima geração (os piores dentre os escolhidos).
+- Elitismo condicional:
+    Uma porcentagem dos individuos (k melhores da população) são escolhidos, porém apenas se a taxa de diversidade da população for mínima.
 
     Pensamos nessa abordagem visando promover a diversidade na população, pois os melhores individuos, já possuem uma vantagem significativa no processo de seleção, então concluímos que seria ruim que esses melhores individuos, além de possuir vantagem seletiva, ainda possuírem a garantia de serem passados para a próxima geração, podendo inclusive contribuir para quem sabe uma convergência prematura.
+
+    A ideia é que o elitismo seja aplicado nas primeiras gerações e quando a diversidade da população cair para um limite, o elitismo é abandonado.
+
+    Nessa proposta, a ideia ainda é o foco em manter um elitismo, mas sem punir tanto a diversidade das populações, tentando minimizar também a ocorrência de convergências prematuras.
