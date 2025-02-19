@@ -12,11 +12,11 @@ def euclidean(fstlocation, sndlocation) -> float:
 # Class that represents an instance of the QA problem
 class ProblemInstance:
     
-    def __init__(self, n):
+    def __init__(self, n, locations=[], distanceMatrix=[], weightMatrix=[]):
         self.size = n
-        self.locations = []
-        self.distanceMatrix = []
-        self.weightMatrix = []
+        self.locations = locations
+        self.distanceMatrix = distanceMatrix
+        self.weightMatrix = weightMatrix
 
     # Function that generates the coordinates of the locations
     def generatelocations(self, n):
@@ -53,7 +53,7 @@ class ProblemInstance:
 
         self.weightMatrix = weightMatrix
 
-    # Function that generates the instance
+    # Function that generates the instance randomly
     def generateInstance(self):
         self.generatelocations(self.size)
         self.generateDistanceMatrix(self.size)

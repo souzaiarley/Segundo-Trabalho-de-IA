@@ -11,7 +11,7 @@ problemInstance.generateInstance()
 selectionMethod = selection.tournamentSelection
 crossoverMethod = crossover.orderCrossover
 mutationMethod = mutation.inversion
-elitismMethod = elitism.elitism
+elitismMethod = elitism.pureElitism
 populationSize = 500
 mutationRate = 0.01
 elitismRate = 0.01
