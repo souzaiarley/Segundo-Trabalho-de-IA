@@ -1,7 +1,7 @@
-import geneticMethods.selection as selection
-import geneticMethods.crossover as crossover
-import geneticMethods.mutation as mutation
-import geneticMethods.elitism as elitism
+from geneticMethods.selection import *
+from geneticMethods.crossover import *
+from geneticMethods.mutation import *
+from geneticMethods.elitism import *
 
 from problemInstance import ProblemInstance
 from individual import Individual

@@ -8,10 +8,10 @@ problemInstance = ProblemInstance(n)
 problemInstance.generateInstance()
 
 # Genetic algorithm variables
-selectionMethod = selection.tournamentSelection
-crossoverMethod = crossover.orderCrossover
-mutationMethod = mutation.inversion
-elitismMethod = elitism.pureElitism
+selectionMethod = tournamentSelection
+crossoverMethod = orderCrossover
+mutationMethod = inversion
+elitismMethod = pureElitism
 populationSize = 500
 mutationRate = 0.01
 elitismRate = 0.01
