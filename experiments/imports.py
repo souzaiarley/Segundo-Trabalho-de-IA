@@ -5,4 +5,4 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from problemInstance import *
 from geneticAlgorithm import *
-from output import *
+from experiments.output import *
