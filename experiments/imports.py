@@ -3,5 +3,6 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from problemInstance import ProblemInstance
-from geneticAlgorithm import GeneticAlgorithm
+from problemInstance import *
+from geneticAlgorithm import *
+from output import *
