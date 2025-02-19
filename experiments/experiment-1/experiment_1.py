@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 from experiments.imports import *
 
 # Problem variables
@@ -36,31 +40,35 @@ geneticAlgorithm1 = GeneticAlgorithm(problemInstance, selectionMethod, crossover
 geneticAlgorithm2 = GeneticAlgorithm(problemInstance, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
 
 # Print the problem instance
-print('\n----------> Problem instance <----------')
-problemInstance.printInstance()
+# print('\n----------> Problem instance <----------')
+# problemInstance.printInstance()
+writeProblemInstanceToFile(problemInstance, 'experiments/experiment-1/problem_instance.csv')
 
 
 for i in range(0, 20):
-    print(f'\n----------> Iteration {i} <----------')
+    # print(f'\n----------> Iteration {i} <----------')
 
-    # Run the genetic algorithms
-    print('\n----------> Running genetic algorithms <----------')
+    # # Run the genetic algorithms
+    # print('\n----------> Running genetic algorithms <----------')
 
-    print('\n----------> Genetic algorithm 1:')
+    # print('\n----------> Genetic algorithm 1:')
     geneticAlgorithmOutput1 = geneticAlgorithm1.run()
-    printGAOutput(geneticAlgorithmOutput1)
+    # printGAOutput(geneticAlgorithmOutput1)
+    writeGAOutputToFile(geneticAlgorithmOutput1, f'experiments/experiment-1/outputs/output{i}.csv')
 
-    print('\n----------> Genetic algorithm 2:')
+    # print('\n----------> Genetic algorithm 2:')
     geneticAlgorithmOutput2 = geneticAlgorithm2.run()
-    printGAOutput(geneticAlgorithmOutput2)
+    # printGAOutput(geneticAlgorithmOutput2)
+    writeGAOutputToFile(geneticAlgorithmOutput2, f'experiments/experiment-1/outputs/output{i}.csv')
 
     # Results
-    print('\n----------> Solutions <----------')
+    # print('\n----------> Solutions <----------')
 
     geneticAlgorithmSolution1 = geneticAlgorithmOutput1[-1]['min']
     geneticAlgorithmSolution2 = geneticAlgorithmOutput2[-1]['min']
 
-    print(f'\nGenetic algorithm solution 1:')
-    print(geneticAlgorithmSolution1)
-    print(f'\nGenetic algorithm solution 2:')
-    print(geneticAlgorithmSolution2)
+    # print(f'\nGenetic algorithm solution 1:')
+    # print(geneticAlgorithmSolution1)
+    # print(f'\nGenetic algorithm solution 2:')
+    # print(geneticAlgorithmSolution2)
+
