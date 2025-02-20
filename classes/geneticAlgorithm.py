@@ -3,8 +3,8 @@ from geneticMethods.crossover import *
 from geneticMethods.mutation import *
 from geneticMethods.elitism import *
 
-from problemInstance import ProblemInstance
-from individual import Individual
+from classes.problemInstance import ProblemInstance
+from classes.individual import Individual
 from random import shuffle
 
 # Class that implements an genetic algorithm to the QAP

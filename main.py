@@ -1,8 +1,8 @@
 import os
 import ast
 
-from problemInstance import *
-from geneticAlgorithm import *
+from classes.problemInstance import *
+from classes.geneticAlgorithm import *
 from experiments.output import *
 
 # Problem variables
