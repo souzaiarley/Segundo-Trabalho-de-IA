@@ -70,23 +70,3 @@ class ProblemInstance:
         print("\nWeight Matrix: ")
         for line in self.weightMatrix:
             print(line)
-
-    # These two functions are used to solve the problem using the brute force approach
-    def evaluate(self, permutation):
-        fitness = 0
-        for i in range(self.size):
-            for j in range(i, self.size):
-                fitness += self.weightMatrix[permutation[i]][permutation[j]] * self.distanceMatrix[i][j]
-        return fitness
-    
-    def bruteForce(self):
-        bestPermutation = None
-        minCost = float('inf')
-        
-        for perm in permutations(range(self.size)):
-            cost = self.evaluate(perm)
-            if cost < minCost:
-                minCost = cost
-                bestPermutation = perm
-                
-        return "-".join(map(str, bestPermutation)), minCost
