@@ -44,6 +44,8 @@ geneticAlgorithm2 = GeneticAlgorithm(problemInstance, selectionMethod, crossover
 # problemInstance.printInstance()
 writeProblemInstanceToFile(problemInstance, 'experiments/experiment-1/problem_instance.csv')
 
+# Garantir que o diretório exista
+os.makedirs(os.path.dirname('experiments/experiment-1/outputs/'), exist_ok=True)
 
 for i in range(0, 20):
     # print(f'\n----------> Iteration {i} <----------')
