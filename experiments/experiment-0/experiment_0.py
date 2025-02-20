@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 from experiments.imports import *
 
 # Creating a custom QAP instance
@@ -51,22 +55,22 @@ geneticAlgorithmSolution = geneticAlgorithmOutput[-1]['min']
 # Results
 applyBruteForce = True # Not recommended for large values of n
 
-print('\n----------> Problem instance <----------')
-instance.printInstance()
-writeProblemInstanceToFile(instance, 'output.csv')
+# print('\n----------> Problem instance <----------')
+# instance.printInstance()
+writeProblemInstanceToFile(instance, 'experiments/experiment-0/output.csv')
 
-print('\n----------> Output <----------\n')
-printGAOutput(geneticAlgorithmOutput)
-writeGAOutputToFile(geneticAlgorithmOutput, 'output.csv')
+# print('\n----------> Output <----------\n')
+# printGAOutput(geneticAlgorithmOutput)
+writeGAOutputToFile(geneticAlgorithmOutput, 'experiments/experiment-0/output.csv')
 
-print('\n----------> Solution <----------')
+# print('\n----------> Solution <----------')
 
-print(f'\nGenetic algorithm solution:')
-print(geneticAlgorithmSolution)
-writeGASolutionToFile(geneticAlgorithmSolution, 'output.csv')
+# print(f'\nGenetic algorithm solution:')
+# print(geneticAlgorithmSolution)
+writeGASolutionToFile(geneticAlgorithmSolution, 'experiments/experiment-0/output.csv')
 
-if applyBruteForce:
-    bruteForceSolution = (instance.bruteForce())
+# if applyBruteForce:
+#     bruteForceSolution = (instance.bruteForce())
 
-    print(f'\nBrute force solution:')
-    print(f'Fitness: {bruteForceSolution[1]}, Permutation: {bruteForceSolution[0]}')
+#     print(f'\nBrute force solution:')
+#     print(f'Fitness: {bruteForceSolution[1]}, Permutation: {bruteForceSolution[0]}')
