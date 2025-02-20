@@ -29,7 +29,7 @@ if instanceType != 1 and instanceType != 2:
 if instanceType == 1:
     problemInstance.generateInstance()
 else:
-    with open('main.txt', 'r') as f:
+    with open('customInstance.txt', 'r') as f:
         content = f.read().strip()
 
     lists = content.split('\n\n')
