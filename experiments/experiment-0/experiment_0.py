@@ -52,6 +52,9 @@ geneticAlgorithm = GeneticAlgorithm(instance, selectionMethod, crossoverMethod, 
 geneticAlgorithmOutput = geneticAlgorithm.run()
 geneticAlgorithmSolution = geneticAlgorithmOutput[-1]['min']
 
+# Garantir que o diretório exista
+os.makedirs(os.path.dirname('experiments/experiment-0/output.csv'), exist_ok=True)
+
 # Results
 applyBruteForce = True # Not recommended for large values of n
 
