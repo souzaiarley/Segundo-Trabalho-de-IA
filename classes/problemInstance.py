@@ -1,6 +1,5 @@
 import math
 from random import randint
-from itertools import permutations
 
 # Function that calculates the Euclidean distance between two points
 def euclidean(fstlocation, sndlocation) -> float:
