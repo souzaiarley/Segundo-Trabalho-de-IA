@@ -132,7 +132,7 @@ mutationRate = float(input('Enter the mutation rate: '))
 elitismRate = float(input('Enter the elitism rate: '))
 
 # Create and run the genetic algorithm
-geneticAlgorithm = GeneticAlgorithm(problemInstance, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
+geneticAlgorithm = GeneticAlgorithm(problemInstance, initializePopulation(populationSize, problemInstance), selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
 
 geneticAlgorithmOutput = geneticAlgorithm.run()
 geneticAlgorithmSolution = geneticAlgorithmOutput[-1]['min']

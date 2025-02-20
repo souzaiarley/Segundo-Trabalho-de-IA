@@ -36,8 +36,10 @@ elitismRate = 0.01
 generations = 30
 
 # Create the genetic algorithms
-geneticAlgorithm1 = GeneticAlgorithm(problemInstance, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
-geneticAlgorithm2 = GeneticAlgorithm(problemInstance, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
+initialPopulation = initializePopulation(populationSize, problemInstance)
+
+geneticAlgorithm1 = GeneticAlgorithm(problemInstance, initialPopulation, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
+geneticAlgorithm2 = GeneticAlgorithm(problemInstance, initialPopulation, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
 
 os.makedirs(os.path.dirname('experiments/experiment-3/problem_instance.csv'), exist_ok=True)
 writeProblemInstanceToFile(problemInstance, 'experiments/experiment-3/problem_instance.csv')

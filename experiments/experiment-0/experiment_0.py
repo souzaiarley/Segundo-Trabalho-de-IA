@@ -47,7 +47,7 @@ elitismRate = 0.01
 generations = 30
 
 # Create and run the genetic algorithm
-geneticAlgorithm = GeneticAlgorithm(instance, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
+geneticAlgorithm = GeneticAlgorithm(instance, initializePopulation(populationSize, instance), selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
 
 geneticAlgorithmOutput = geneticAlgorithm.run()
 geneticAlgorithmSolution = geneticAlgorithmOutput[-1]['min']

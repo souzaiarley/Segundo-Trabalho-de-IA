@@ -7,11 +7,48 @@ from classes.problemInstance import ProblemInstance
 from classes.individual import Individual
 from random import shuffle
 
+# Evaluate the fitness of an individual
+def evaluate(permutation, problemInstance):
+    fitness = 0
+
+    # Calculate the fitness of the permutation using the distance and weight matrices
+    for i in range(problemInstance.size):
+        for j in range(i, problemInstance.size):
+            fitness += problemInstance.weightMatrix[permutation[i]][permutation[j]] * problemInstance.distanceMatrix[i][j]
+
+    return fitness
+
+# Initialize the population with random permutations
+def initializePopulation(populationSize, problemInstance):
+    initialPopulation = []
+
+    # Create a list with the available locations, i.e., [0, 1, 2, ..., n-1]
+    locations = [i for i in range(0, problemInstance.size)]
+
+    # Create the population with random permutations
+    for i in range(0, populationSize):
+
+        # Shuffle the list of available locations, i.e., create a random permutation
+        shuffle(locations)
+        permutation = locations.copy()
+
+        # Evaluate the fitness of the permutation
+        fitness = evaluate(permutation, problemInstance)
+
+        # Create an individual with the permutation and its fitness
+        individual = Individual(fitness, permutation)
+
+        # Add the individual to the population
+        initialPopulation.append(individual)
+
+    return initialPopulation
+
 # Class that implements an genetic algorithm to the QAP
 class GeneticAlgorithm:
 
-    def __init__(self, problemInstance, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations):
+    def __init__(self, problemInstance, initialPopulation, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations):
         self.problemInstance = problemInstance
+        self.initialPopulation = initialPopulation
         self.selectionMethod = selectionMethod
         self.crossoverMethod = crossoverMethod
         self.mutationMethod = mutationMethod
@@ -20,42 +57,6 @@ class GeneticAlgorithm:
         self.mutationRate = mutationRate
         self.elitismRate = elitismRate
         self.generations = generations
-
-    # Evaluate the fitness of an individual
-    def evaluate(self, permutation):
-        fitness = 0
-
-        # Calculate the fitness of the permutation using the distance and weight matrices
-        for i in range(self.problemInstance.size):
-            for j in range(i, self.problemInstance.size):
-                fitness += self.problemInstance.weightMatrix[permutation[i]][permutation[j]] * self.problemInstance.distanceMatrix[i][j]
-
-        return fitness
-
-    # Initialize the population with random permutations
-    def initializePopulation(self, populationSize):
-        population = []
-
-        # Create a list with the available locations, i.e., [0, 1, 2, ..., n-1]
-        locations = [i for i in range(0, self.problemInstance.size)]
-
-        # Create the population with random permutations
-        for i in range(0, populationSize):
-
-            # Shuffle the list of available locations, i.e., create a random permutation
-            shuffle(locations)
-            permutation = locations.copy()
-
-            # Evaluate the fitness of the permutation
-            fitness = self.evaluate(permutation)
-
-            # Create an individual with the permutation and its fitness
-            individual = Individual(fitness, permutation)
-
-            # Add the individual to the population
-            population.append(individual)
-
-        return population
     
     # Get the population statistics
     def getPopulationStats(self, population):
@@ -87,33 +88,26 @@ class GeneticAlgorithm:
 
         # Add the generated children to the new population
         for child in children:
-            newPopulation.append(Individual(self.evaluate(child), child))
+            newPopulation.append(Individual(evaluate(child, self.problemInstance), child))
 
         return newPopulation
 
     def run(self):
         output = []
 
-        # Generate the initial population randomly
-        population = self.initializePopulation(self.populationSize)
+        actualPopulation = self.initialPopulation
 
         minIndividual = maxIndividual = avgFitness = None
 
         for i in range(0, self.generations):
-            # print(f'\nGeneration {i}')
-
             # Get the population statistics
-            minIndividual, maxIndividual, avgFitness = self.getPopulationStats(population)
-
-            # print(f'Individual with lowest cost: {minIndividual}')
-            # print(f'Individual with highest cost: {maxIndividual}')
-            # print(f'Average cost: {avgFitness}')
+            minIndividual, maxIndividual, avgFitness = self.getPopulationStats(actualPopulation)
 
             # Select the elite individuals, they will be preserved for the next generation
-            elite = self.elitismMethod(population, self.populationSize, self.elitismRate)
+            elite = self.elitismMethod(actualPopulation, self.populationSize, self.elitismRate)
 
             # Select the parents for the crossover
-            parents = self.selectionMethod(self.populationSize-len(elite), population)
+            parents = self.selectionMethod(self.populationSize-len(elite), actualPopulation)
 
             # Generate the children using the crossover method
             children = self.crossoverMethod(self.populationSize, parents)
@@ -122,7 +116,7 @@ class GeneticAlgorithm:
             mutatedchildren = self.mutationMethod(children, self.mutationRate)
 
             # Evolve the population
-            population = self.evolve(elite, mutatedchildren)
+            actualPopulation = self.evolve(elite, mutatedchildren)
 
             # Build the output
             generation = {
