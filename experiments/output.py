@@ -12,7 +12,7 @@ def printGAOutput(output):
 
 # Writes the problem instance to a file
 def writeProblemInstanceToFile(instance, filename):
-    with open (filename, 'w') as file:
+    with open(filename, 'w') as file:
         writer = csv.writer(file)
 
         # Write the header
@@ -23,7 +23,7 @@ def writeProblemInstanceToFile(instance, filename):
 
 # Writes the output of the genetic algorithm to a file
 def writeGAOutputToFile(output, filename):
-    with open(filename, 'a') as file:
+    with open(filename, 'w') as file:
         writer = csv.writer(file)
 
         # Write the header
@@ -35,7 +35,7 @@ def writeGAOutputToFile(output, filename):
 
 # Writes the solution of the genetic algorithm to a file
 def writeGASolutionToFile(solution, filename):
-    with open (filename, 'a') as file:
+    with open(filename, 'a') as file:
         writer = csv.writer(file)
 
         # Write the header

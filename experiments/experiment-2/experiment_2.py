@@ -26,8 +26,8 @@ generations = 30
 # 2nd variation
 
 # Genetic algorithm variables
-selectionMethod = rankingSelection
-crossoverMethod = orderCrossover
+selectionMethod = tournamentSelection
+crossoverMethod = positionBasedCrossover
 mutationMethod = inversion
 elitismMethod = pureElitism
 populationSize = 500
@@ -42,10 +42,10 @@ geneticAlgorithm2 = GeneticAlgorithm(problemInstance, selectionMethod, crossover
 # Print the problem instance
 # print('\n----------> Problem instance <----------')
 # problemInstance.printInstance()
-writeProblemInstanceToFile(problemInstance, 'experiments/experiment-1/problem_instance.csv')
+writeProblemInstanceToFile(problemInstance, 'experiments/experiment-2/problem_instance.csv')
 
 # Garantir que o diretório exista
-os.makedirs(os.path.dirname('experiments/experiment-1/outputs/'), exist_ok=True)
+os.makedirs(os.path.dirname('experiments/experiment-2/outputs/'), exist_ok=True)
 
 for i in range(0, 20):
     # print(f'\n----------> Iteration {i} <----------')
@@ -56,12 +56,12 @@ for i in range(0, 20):
     # print('\n----------> Genetic algorithm 1:')
     geneticAlgorithmOutput1 = geneticAlgorithm1.run()
     # printGAOutput(geneticAlgorithmOutput1)
-    writeGAOutputToFile(geneticAlgorithmOutput1, f'experiments/experiment-1/outputs/output{i}.csv')
+    writeGAOutputToFile(geneticAlgorithmOutput1, f'experiments/experiment-2/outputs/output{i}.csv')
 
     # print('\n----------> Genetic algorithm 2:')
     geneticAlgorithmOutput2 = geneticAlgorithm2.run()
     # printGAOutput(geneticAlgorithmOutput2)
-    writeGAOutputToFile(geneticAlgorithmOutput2, f'experiments/experiment-1/outputs/output{i}.csv')
+    writeGAOutputToFile(geneticAlgorithmOutput2, f'experiments/experiment-2/outputs/output{i}.csv')
 
     # Results
     # print('\n----------> Solutions <----------')

@@ -60,7 +60,7 @@ applyBruteForce = True # Not recommended for large values of n
 
 # print('\n----------> Problem instance <----------')
 # instance.printInstance()
-writeProblemInstanceToFile(instance, 'experiments/experiment-0/output.csv')
+writeProblemInstanceToFile(instance, 'experiments/experiment-0/problem_instance.csv')
 
 # print('\n----------> Output <----------\n')
 # printGAOutput(geneticAlgorithmOutput)
