@@ -39,38 +39,18 @@ generations = 30
 geneticAlgorithm1 = GeneticAlgorithm(problemInstance, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
 geneticAlgorithm2 = GeneticAlgorithm(problemInstance, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
 
-# Print the problem instance
-# print('\n----------> Problem instance <----------')
-# problemInstance.printInstance()
+os.makedirs(os.path.dirname('experiments/experiment-2/problem_instance.csv'), exist_ok=True)
 writeProblemInstanceToFile(problemInstance, 'experiments/experiment-2/problem_instance.csv')
 
 # Garantir que o diretório exista
 os.makedirs(os.path.dirname('experiments/experiment-2/outputs/'), exist_ok=True)
 
 for i in range(0, 20):
-    # print(f'\n----------> Iteration {i} <----------')
-
-    # # Run the genetic algorithms
-    # print('\n----------> Running genetic algorithms <----------')
-
-    # print('\n----------> Genetic algorithm 1:')
     geneticAlgorithmOutput1 = geneticAlgorithm1.run()
-    # printGAOutput(geneticAlgorithmOutput1)
-    writeGAOutputToFile(geneticAlgorithmOutput1, f'experiments/experiment-2/outputs/output{i}.csv')
+    writeGAOutputToFile(geneticAlgorithmOutput1, f'experiments/experiment-2/outputs/{i}_firstAlgorithm.csv')
 
-    # print('\n----------> Genetic algorithm 2:')
     geneticAlgorithmOutput2 = geneticAlgorithm2.run()
-    # printGAOutput(geneticAlgorithmOutput2)
-    writeGAOutputToFile(geneticAlgorithmOutput2, f'experiments/experiment-2/outputs/output{i}.csv')
-
-    # Results
-    # print('\n----------> Solutions <----------')
+    writeGAOutputToFile(geneticAlgorithmOutput2, f'experiments/experiment-2/outputs/{i}_secondAlgorithm.csv')
 
     geneticAlgorithmSolution1 = geneticAlgorithmOutput1[-1]['min']
     geneticAlgorithmSolution2 = geneticAlgorithmOutput2[-1]['min']
-
-    # print(f'\nGenetic algorithm solution 1:')
-    # print(geneticAlgorithmSolution1)
-    # print(f'\nGenetic algorithm solution 2:')
-    # print(geneticAlgorithmSolution2)
-

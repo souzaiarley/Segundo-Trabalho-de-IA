@@ -47,10 +47,10 @@ os.makedirs(os.path.dirname('experiments/experiment-1/outputs/'), exist_ok=True)
 
 for i in range(0, 20):
     geneticAlgorithmOutput1 = geneticAlgorithm1.run()
-    writeGAOutputToFile(geneticAlgorithmOutput1, f'experiments/experiment-1/outputs/output{i}.csv')
+    writeGAOutputToFile(geneticAlgorithmOutput1, f'experiments/experiment-1/outputs/{i}_firstAlgorithm.csv')
 
     geneticAlgorithmOutput2 = geneticAlgorithm2.run()
-    writeGAOutputToFile(geneticAlgorithmOutput2, f'experiments/experiment-1/outputs/output{i}.csv')
+    writeGAOutputToFile(geneticAlgorithmOutput2, f'experiments/experiment-1/outputs/{i}_secondAlgorithm.csv')
 
     geneticAlgorithmSolution1 = geneticAlgorithmOutput1[-1]['min']
     geneticAlgorithmSolution2 = geneticAlgorithmOutput2[-1]['min']
