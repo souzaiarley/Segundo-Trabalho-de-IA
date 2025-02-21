@@ -21,7 +21,7 @@ elitismMethod = pureElitism
 populationSize = 500
 mutationRate = 0.01
 elitismRate = 0.01
-generations = 30
+generations = 100
 
 # 2nd variation
 
@@ -33,7 +33,7 @@ elitismMethod = conditionalElitism
 populationSize = 500
 mutationRate = 0.01
 elitismRate = 0.01
-generations = 30
+generations = 100
 
 # Create the genetic algorithms
 initialPopulation = initializePopulation(populationSize, problemInstance)
