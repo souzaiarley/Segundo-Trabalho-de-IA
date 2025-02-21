@@ -137,6 +137,9 @@ geneticAlgorithm = GeneticAlgorithm(problemInstance, initializePopulation(popula
 geneticAlgorithmOutput = geneticAlgorithm.run()
 geneticAlgorithmSolution = geneticAlgorithmOutput[-1]['min']
 
+os.system('cls')
+os.system('clear')
+
 print('\n----------> Output <----------\n')
 printGAOutput(geneticAlgorithmOutput)
 
