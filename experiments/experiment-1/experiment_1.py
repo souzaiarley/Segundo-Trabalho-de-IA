@@ -30,6 +30,7 @@ generations = 100
 initialPopulation = initializePopulation(populationSize, problemInstance)
 
 geneticAlgorithm1 = GeneticAlgorithm(problemInstance, initialPopulation, firstSelectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
+
 geneticAlgorithm2 = GeneticAlgorithm(problemInstance, initialPopulation, secondSelectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
 
 os.makedirs(os.path.dirname('experiments/experiment-1/problem_instance.csv'), exist_ok=True)
