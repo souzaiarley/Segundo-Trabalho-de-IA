@@ -12,23 +12,14 @@ problemInstance = ProblemInstance(n)
 problemInstance.generateInstance()
 
 # 1st variation
-
-# Genetic algorithm variables
-selectionMethod = tournamentSelection
-crossoverMethod = orderCrossover
-mutationMethod = inversion
-elitismMethod = pureElitism
-populationSize = 500
-mutationRate = 0.01
-elitismRate = 0.01
-generations = 100
+firstMutationMethod = inversion
 
 # 2nd variation
+secondMutationMethod = exchange
 
 # Genetic algorithm variables
 selectionMethod = tournamentSelection
 crossoverMethod = orderCrossover
-mutationMethod = exchange
 elitismMethod = pureElitism
 populationSize = 500
 mutationRate = 0.01
@@ -38,8 +29,8 @@ generations = 100
 # Create the genetic algorithms
 initialPopulation = initializePopulation(populationSize, problemInstance)
 
-geneticAlgorithm1 = GeneticAlgorithm(problemInstance, initialPopulation, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
-geneticAlgorithm2 = GeneticAlgorithm(problemInstance, initialPopulation, selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
+geneticAlgorithm1 = GeneticAlgorithm(problemInstance, initialPopulation, selectionMethod, crossoverMethod, firstMutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
+geneticAlgorithm2 = GeneticAlgorithm(problemInstance, initialPopulation, selectionMethod, crossoverMethod, secondMutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
 
 os.makedirs(os.path.dirname('experiments/experiment-4/problem_instance.csv'), exist_ok=True)
 writeProblemInstanceToFile(problemInstance, 'experiments/experiment-4/problem_instance.csv')
