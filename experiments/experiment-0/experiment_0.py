@@ -44,7 +44,7 @@ elitismMethod = pureElitism
 populationSize = 500
 mutationRate = 0.01
 elitismRate = 0.01
-generations = 30
+generations = 100
 
 # Create and run the genetic algorithm
 geneticAlgorithm = GeneticAlgorithm(instance, initializePopulation(populationSize, instance), selectionMethod, crossoverMethod, mutationMethod, elitismMethod, populationSize, mutationRate, elitismRate, generations)
