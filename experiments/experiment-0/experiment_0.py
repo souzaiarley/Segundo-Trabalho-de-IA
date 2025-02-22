@@ -5,7 +5,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.
 from experiments.imports import *
 
 # Creating a custom QAP instance
-n = 9
+n = 10
 
 locations = [(20, 12), (9, 5), (26, 14), (18, 30), (10, 4), (9, 17), (14, 9), (1, 11), (7, 4), (18, 7)]
 
