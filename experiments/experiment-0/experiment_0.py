@@ -56,24 +56,9 @@ geneticAlgorithmSolution = geneticAlgorithmOutput[-1]['min']
 os.makedirs(os.path.dirname('experiments/experiment-0/output.csv'), exist_ok=True)
 
 # Results
-applyBruteForce = True # Not recommended for large values of n
 
-# print('\n----------> Problem instance <----------')
-# instance.printInstance()
 writeProblemInstanceToFile(instance, 'experiments/experiment-0/problem_instance.csv')
 
-# print('\n----------> Output <----------\n')
-# printGAOutput(geneticAlgorithmOutput)
 writeGAOutputToFile(geneticAlgorithmOutput, 'experiments/experiment-0/output.csv')
 
-# print('\n----------> Solution <----------')
-
-# print(f'\nGenetic algorithm solution:')
-# print(geneticAlgorithmSolution)
 writeGASolutionToFile(geneticAlgorithmSolution, 'experiments/experiment-0/output.csv')
-
-# if applyBruteForce:
-#     bruteForceSolution = (instance.bruteForce())
-
-#     print(f'\nBrute force solution:')
-#     print(f'Fitness: {bruteForceSolution[1]}, Permutation: {bruteForceSolution[0]}')
